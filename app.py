@@ -1755,8 +1755,27 @@ def submit():
     return render_template('submit.html', filename=filename)
 
 @app.route('/download/<filename>')
-def download_file(filename):
-    return send_from_directory('autosaves', filename, as_attachment=True)
+def download():
+    responses = session.get('responses', [])
+    if not responses:
+        return "No data to download."
+
+    # Save as CSV-like structure in memory
+    output = io.StringIO()
+    headers = set()
+    for response in responses:
+        headers.update(response.keys())
+    headers = sorted(headers)
+    output.write(",".join(headers) + "\n")
+    for response in responses:
+        row = [str(response.get(h, "")) for h in headers]
+        output.write(",".join(row) + "\n")
+    output.seek(0)
+
+    return send_file(io.BytesIO(output.getvalue().encode('utf-8')),
+                     mimetype='text/csv',
+                     as_attachment=True,
+                     download_name='responses.csv')
 
 
 if __name__ == '__main__':
