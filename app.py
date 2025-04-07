@@ -1511,6 +1511,11 @@ def index():
         session.pop(f'current_task_{pnum}', None)
     return redirect(url_for('page', page_num=1))
 
+@app.route("/ping")
+def ping():
+    return "pong"
+
+
 @app.route('/page/<int:page_num>', methods=['GET','POST'])
 def page(page_num):
     page_data = get_page(page_num)
