@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{{ page.title if page else "Experiment" }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/experiment.js') }}"></script>
+</head>
+<body data-page="{{ page.page_number if page else '' }}">
+    <div id="overall-progress-wrapper">
+        <div id="overall-progress-bar" style="width: {{ progress_percent }}%;"></div>
+    </div>
+    
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

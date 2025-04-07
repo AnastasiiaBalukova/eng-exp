@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ page.title }}</h2>
+<p>{{ page.content | safe }}</p>
+
+{% if page.type == "disclaimer" %}
+    <div style="text-align: center; margin-top: 150px;">
+        <h1 style="font-size: 2em; font-weight: bold; color: red;">
+            Accomplish tasks as quickly as possible
+        </h1>
+    </div>
+    <script>
+        setTimeout(function () {
+            window.location.href = "/page/{{ next_page }}";
+        }, 3000);
+    </script>
+
+{% elif page.type in ["info", "instructions", "consent"] %}
+    <form method="post">
+        {% if page.type == "consent" %}
+            <label><input type="checkbox" name="consent" required> I consent to participate.</label>
+        {% endif %}
+        <button type="submit">Next</button>
+    </form>
+
+{% elif page.type in ["math","mc"] and current_task %}
+    <form method="post" id="taskForm">
+        <p><strong>Task {{ task_number }} of {{ total_tasks }}</strong></p>
+        <p>{{ current_task.question }}</p>
+
+        {% if current_task.options %}
+            {% for option in current_task.options %}
+                <label>
+                    <input type="radio" name="answer" value="{{ option }}" required> {{ option }}
+                </label><br>
+            {% endfor %}
+        {% else %}
+            {% if page.page_number in [4,6,8,28,34,40] %}
+                <input type="number" name="answer" id="answerInput" autocomplete="off" required>
+            {% else %}
+                <input type="text" name="answer" id="answerInput" autocomplete="off" required>
+            {% endif %}
+        {% endif %}
+
+        <input type="hidden" name="task_time" class="task-time">
+        <button type="submit">Submit</button>
+        <p id="feedback" style="color: {{ feedback_color }};">{{ feedback }}</p>
+    </form>
+
+    {% if time_limit %}
+        <div class="timer">Time left: <span id="countdown">{{ time_limit|round(1) }}</span> seconds</div>
+        <div class="progress-container">
+            <div id="progress-bar"></div>
+        </div>
+    {% endif %}
+
+{% elif page.type == "continuous" and current_task %}
+    <form method="post">
+        <p>{{ current_task.question }}</p>
+        <div class="range-container">
+            <input type="range" name="answer" min="0" max="100" step="1" value="50"
+                   id="continuousRange" oninput="updateRangeValue(this.value)" required>
+                   <div class="range-labels">
+                    <div style="text-align: left;">
+                        <span>0</span><br>
+                        <small>Not stressed at all</small>
+                    </div>
+                    <div style="text-align: right;">
+                        <span>100</span><br>
+                        <small>Highly stressed</small>
+                    </div>
+                </div>
+        </div>
+        <input type="hidden" name="task_time" class="task-time">
+        <button type="submit">Submit</button>
+    </form>
+
+    {% elif page.type == "letter_grid" %}
+    <form method="post">
+        <p>Target Letter: <strong>{{ target_letter }}</strong></p>
+        <table class="grid">
+            {% for row in grid %}
+            <tr>
+                {% for letter in row %}
+                    <td><button type="button" class="grid-btn">{{ letter }}</button></td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+        <p>This task will end automatically in 30 seconds.</p>
+        <input type="hidden" name="letter_count" id="letter_count" value="0">
+    </form>
+
+{% elif page.type == "ladder" %}
+    <div class="ladder-wrapper">
+        <div class="ladder-labels-side">
+            <div class="ladder-label-top">Best off →</div>
+            <div class="ladder-label-bottom">Worst off →</div>
+        </div>
+        <div id="ladderContainer" class="ladder">
+            {% for i in range(10,0,-1) %}
+                <div class="rung" data-value="{{ i }}">{{ i }}</div>
+            {% endfor %}
+        </div>
+    </div>
+    <form method="post">
+        <input type="hidden" name="ladder_choice" id="ladder_value" required>
+        <button type="submit" id="nextBtn" disabled>Next</button>
+    </form>
+
+{% elif page.type == "yesno" %}
+    <form method="post">
+        {% for task in page.tasks %}
+            <div class="task">
+                <p>{{ task.question }}</p>
+                <label><input type="radio" name="answer_{{ loop.index }}" value="Yes" required> Yes</label>
+                <label><input type="radio" name="answer_{{ loop.index }}" value="No" required> No</label>
+            </div>
+        {% endfor %}
+        <button type="submit">Next</button>
+    </form>
+
+    {% elif page.type == "demographics" %}
+    <form method="post" id="demographicsForm" data-page="{{ page.page_number }}">
+        {% for task in page.tasks %}
+            <div class="task" data-show-if='{{ task.show_if | tojson | safe if task.show_if else "" }}'>
+                <p>{{ task.question }}</p>
+                {% if task.type == "text" %}
+                    <input type="text" name="{{ task.name }}" {% if task.required %}required{% endif %}>
+                {% elif task.type == "select" %}
+                    <select name="{{ task.name }}" {% if task.required %}required{% endif %}>
+                        <option value="">-- Select --</option>
+                        {% for option in task.options %}
+                            <option value="{{ option }}">{{ option }}</option>
+                        {% endfor %}
+                    </select>
+                {% elif task.type == "radio" %}
+                    {% for option in task.options %}
+                        <label><input type="radio" name="{{ task.name }}" value="{{ option }}" {% if task.required %}required{% endif %}> {{ option }}</label>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        {% endfor %}
+        <button type="submit">Next</button>
+    </form>
+            
+    
+{% elif page.type == "end" %}
+<h2>Thank You!</h2>
+<p>{{ page.content | safe }}</p>
+<p>Your data has been saved to {{ filename if filename else 'experiment_data.csv' }}</p>
+{% else %}
+<!-- fallback for other page types -->
+<form method="post">
+    <p>This page type is not supported in this template.</p>
+    <button type="submit">Next</button>
+</form>
+{% endif %}
+{% endblock %}
