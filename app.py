@@ -440,7 +440,7 @@ In the line below, type your answer:<br>
     'type': 'instructions'},
 
     # Page 22: Letter Grid Task
-    {'page_number': 22, 'title': 'Letter Grid Task', 'content': 'Find the target letter as quickly as possible. When you click the target letter correctly, a new grid is generated. This task lasts 30 seconds.', 'type': 'letter_grid'},
+    {'page_number': 22, 'title': 'Letter Grid Task', 'content': 'Find the target letter as quickly as possible. When you click the target letter correctly, a new grid is generated.', 'type': 'letter_grid'},
 
     # Page 23: Demographics (Objective SES)
    {'page_number': 23,
@@ -672,7 +672,7 @@ In the line below, type your answer:<br>
         ''',
     'type': 'instructions'},
     # Page 31: Letter Grid Task
-    {'page_number': 31, 'title': 'Letter Grid Task', 'content': 'Find the target letter as quickly as possible. When you click the target letter correctly, a new grid is generated. This task lasts 30 seconds.', 'type': 'letter_grid'},
+    {'page_number': 31, 'title': 'Letter Grid Task', 'content': 'Find the target letter as quickly as possible. When you click the target letter correctly, a new grid is generated.', 'type': 'letter_grid'},
 
     # Page 32: Conditional Instructions (based on performance on page 6)
     {'page_number': 32, 'title': 'Math Challenge Instructions', 'content': '''
@@ -742,7 +742,7 @@ In the line below, type your answer:<br>
     'type': 'instructions'},
 
     # Page 37: Letter Grid Task
-    {'page_number': 37, 'title': 'Letter Grid Task', 'content': 'Find the target letter as quickly as possible. When you click the target letter correctly, a new grid is generated. This task lasts 30 seconds.', 'type': 'letter_grid'},
+    {'page_number': 37, 'title': 'Letter Grid Task', 'content': 'Find the target letter as quickly as possible. When you click the target letter correctly, a new grid is generated.', 'type': 'letter_grid'},
 
     # Page 38: Conditional Instructions (based on performance on page 8)
     {'page_number': 38, 'title': 'Math Challenge Instructions', 'content': '''
@@ -811,7 +811,7 @@ In the line below, type your answer:<br>
     'type': 'instructions'},
 
     # Page 43: Letter Grid Task
-    {'page_number': 43, 'title': 'Letter Grid Task', 'content': 'Find the target letter as quickly as possible. When you click the target letter correctly, a new grid is generated. This task lasts 30 seconds.', 'type': 'letter_grid'},
+    {'page_number': 43, 'title': 'Letter Grid Task', 'content': 'Find the target letter as quickly as possible. When you click the target letter correctly, a new grid is generated.', 'type': 'letter_grid'},
 
     # Page 44: Conditional Instructions (based on performance on page 10)
     {'page_number': 44, 'title': 'Reading Challenge Instructions', 'content': '''
@@ -886,7 +886,7 @@ In the line below, type your answer:<br>
     'type': 'instructions'},
 
     # Page 49: Letter Grid Task
-    {'page_number': 49, 'title': 'Letter Grid Task', 'content': 'Find the target letter as quickly as possible. When you click the target letter correctly, a new grid is generated. This task lasts 30 seconds.', 'type': 'letter_grid'},
+    {'page_number': 49, 'title': 'Letter Grid Task', 'content': 'Find the target letter as quickly as possible. When you click the target letter correctly, a new grid is generated.', 'type': 'letter_grid'},
 
     # Page 50: Conditional Instructions (based on performance on page 12)
     {'page_number': 50, 'title': 'Reading Challenge Instructions', 'content': '''
@@ -1025,7 +1025,7 @@ In the line below, type your answer:<br>
     'type': 'instructions'},
 
     # Page 55: Letter Grid Task
-    {'page_number': 55, 'title': 'Letter Grid Task', 'content': 'Find the target letter as quickly as possible. When you click the target letter correctly, a new grid is generated. This task lasts 30 seconds.', 'type': 'letter_grid'},
+    {'page_number': 55, 'title': 'Letter Grid Task', 'content': 'Find the target letter as quickly as possible. When you click the target letter correctly, a new grid is generated.', 'type': 'letter_grid'},
 
     # Page 56: Conditional Instructions (based on performance on page 14)
     {'page_number': 56, 'title': 'Reading Challenge Instructions', 'content': '''
@@ -1160,7 +1160,7 @@ In the line below, type your answer:<br>
     'type': 'instructions'},
 
     # Page 61: Letter Grid Task
-    {'page_number': 61, 'title': 'Letter Grid Task', 'content': 'Find the target letter as quickly as possible. When you click the target letter correctly, a new grid is generated. This task lasts 30 seconds.', 'type': 'letter_grid'},
+    {'page_number': 61, 'title': 'Letter Grid Task', 'content': 'Find the target letter as quickly as possible. When you click the target letter correctly, a new grid is generated.', 'type': 'letter_grid'},
 
     # Page 62: Conditional Instructions (based on performance on page 16)
     {'page_number': 62, 'title': 'Vocabulary Challenge Instructions', 'content': '''
@@ -1385,7 +1385,7 @@ In the line below, type your answer:<br>
     'type': 'instructions'},
 
     # Page 73: Letter Grid Task
-    {'page_number': 73, 'title': 'Letter Grid Task', 'content': 'Find the target letter as quickly as possible. When you click the target letter correctly, a new grid is generated. This task lasts 30 seconds.', 'type': 'letter_grid'},
+    {'page_number': 73, 'title': 'Letter Grid Task', 'content': 'Find the target letter as quickly as possible. When you click the target letter correctly, a new grid is generated.', 'type': 'letter_grid'},
 
     # Page 74: Conditional Instructions (based on performance on page 20)
     {'page_number': 74, 'title': 'Vocabulary Challenge Instructions', 'content': '''
